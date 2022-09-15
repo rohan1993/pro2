@@ -1,0 +1,20 @@
+---
+- name: example_playbook
+  hosts: client1
+  become: yes
+
+  vars:
+   greeting: Hello world!
+  tasks:
+    - name: creating a new directory
+      file:
+      path: "/home/example_playbook"
+      state: directory
+
+  tasks:
+    - name: deploy greeting
+      copy:
+        dest: "/home/example_playbook"
+        content: "{{ greeting }}"
+
+...
